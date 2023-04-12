@@ -1,3 +1,5 @@
+//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+//#include "doctest.h"
 #include <iostream>
 #include <stack>
 #include <string>
@@ -46,9 +48,9 @@ public:
         return my_stack.top();
     }
 
-    string toReversePolish(string input) {
-        string output = "";
-        stack<char> my_stack_char;
+    string toReversePolish(string input) { // 5+6*(3-2)
+        string output = ""; //
+        stack<char> my_stack_char;//
         for (int i = 0; i < input.length(); i++) {
             if (input[i] == ' ') continue;
             if (isdigit(input[i])) {
@@ -108,5 +110,19 @@ int main() {
     cout << "Result: " << result << endl;
 
     return 0;
+} 
+/*
+TEST_CASE("RPN test") {
+    string input = "(3 + 4) * (5 - 2) / 2";
+    RpN rpn;
+    string rpn_str = rpn.toReversePolish(input);
+    CHECK(rpn_str == "3 4 + 5 2 - * 2 / ");
 }
 
+TEST_CASE("calc test") {
+    string input = "(3 + 4) * (5 - 2) / 2";
+    RpN rpn;
+    string rpn_str = rpn.toReversePolish(input);
+    double result = rpn.calc(rpn_str);
+    CHECK(result == 10.5);
+} */
